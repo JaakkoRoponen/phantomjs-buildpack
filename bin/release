@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cat << EOF
+---
+default_process_types:
+  console: "vendor/phantomjs/bin/phantomjs"
+EOF
