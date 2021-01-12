@@ -2,15 +2,19 @@
 
 set -e
 
+indent() {
+  sed -u 's/^/       /'
+}
+
 BUILD_DIR=$1
 
 FILE=phantomjs-2.1.1-linux-x86_64
 
-echo "-----> Extracting PhantomJS binary to $BUILD_DIR/vendor/phantomjs"
+echo "Extracting PhantomJS binary to $BUILD_DIR/vendor/phantomjs" | indent
 tar jxf $FILE.tar.bz2
 mkdir -p $BUILD_DIR/vendor
 mv $FILE $BUILD_DIR/vendor/phantomjs
 
-echo "-----> Adding PhantomJS binary to PATH"
+echo "Adding PhantomJS binary to PATH" | indent
 mkdir -p $BUILD_DIR/.profile.d
 echo 'PATH=$PATH:$HOME/vendor/phantomjs/bin' >> $BUILD_DIR/.profile.d/phantomjs.sh
